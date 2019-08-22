@@ -5,16 +5,16 @@ function RecipeList(props) {
 
     return (
         <div className='recipes-container'>
-            {props.recipes.map(el=>{
-                return <div className='recipes-el'>
-                    <h3>{el.title}</h3>
+            {props.recipes.map((recipe,index)=>{
+                return <div key={index} className='recipes-el'>
+                    <h3>{recipe.title}</h3>
                     <ul>
-                        {el.ingredients.split(', ').map(a=>{
-                            return <li>{a}</li>
+                        {recipe.ingredients.split(', ').map((ingredient,i)=>{
+                            return <li key={i}>{ingredient}</li>
                         })}
                     </ul>
-                    <a href={el.href}>LINK</a>
-                    <img src={el.thumbnail} alt=""/>
+                    <a href={recipe.href}>LINK</a>
+                    <img src={recipe.thumbnail} alt=""/>
                 </div>
 
             })}

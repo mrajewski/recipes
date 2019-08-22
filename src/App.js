@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import RecipesList from "./components/recipesList";
 import AddedIngredients from "./components/addedIngredient";
 import Form from "./components/form";
+import Loader from "./components/loader";
 import './App.css';
 import "./styles.scss";
+
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const targetUrl = 'http://www.recipepuppy.com/api/?i=';
 
@@ -13,37 +15,41 @@ class App extends Component {
         ingredients: [],
         inputVal: '',
         addedIngredient: [],
-        recipesToShow: []
+        recipesToShow: [],
+        pageLoaded: false,
+        recipesLoaded: true
     };
 
     componentDidMount() {
         fetch(proxyUrl + targetUrl)
             .then(response => response.json())
             .then(contents => {
-                // Making list with all ingredients (sorted and no duplicates)
+                // Making list with example ingredients (sorted and no duplicates)
                 const ing = contents.results.map(el => el.ingredients.split(", "));
                 const arr = ing.reduce((a, b) => [...a, ...b]);
                 this.setState({
                     data: contents.results,
-                    ingredients: [...new Set(arr)].sort()
+                    ingredients: [...new Set(arr)].sort(),
+                    pageLoaded:true
                 });
-                console.log(this.state.ingredients);
-                console.log(contents);
             })
             .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"))
     }
 
-    searchForRecipes = (url)=>{
+    //Searching for no recipes
+    searchForRecipes = (url) => {
         fetch(url)
             .then(response => response.json())
             .then(contents => {
                 this.setState({
-                    addenIngredient:[],
-                    recipesToShow:contents.results
+                    addedIngredient: [],
+                    recipesToShow: contents.results,
+                    inputVal: '',
+                    recipesLoaded:true
                 })
             })
             .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
-    }  ;
+    };
 
 
     handleOnChange = (e) => {
@@ -57,45 +63,40 @@ class App extends Component {
         addedIngredient.push(this.state.inputVal);
         this.setState({
             inputVal: '',
-            addedIngredient
+            addedIngredient,
         });
     };
 
     handleOnSubmit = (e) => {
         e.preventDefault();
+        this.setState({
+            recipesLoaded:false
+        });
         const ending = this.state.addedIngredient.join(',').replace("[^a-zA-Z0-9]", "").toLowerCase();
-        this.searchForRecipes(proxyUrl+ targetUrl + ending);
-        // this.setState({
-        //     addedIngredient: [],
-        // });
-        // const arr = [];
-        // this.state.data.forEach(el => {
-        //     this.state.addedIngredient.forEach(a => {
-        //         if (el.ingredients.includes(a)) {
-        //             arr.push(el)
-        //         }
-        //     })
-        // });
-        // console.log(arr);
-        // this.setState({
-        //     recipesToShow: arr
-        // })
-
+        this.searchForRecipes(proxyUrl + targetUrl + ending);
     };
 
     render() {
-        return (
-            <>
-                <Form click={this.handleOnClick}
-                      change={this.handleOnChange}
-                      data={this.state.ingredients}
-                      submit={this.handleOnSubmit}
-                      inputVal={this.state.inputVal}
-                />
-                <AddedIngredients list={this.state.addedIngredient}/>
-                <RecipesList recipes={this.state.recipesToShow}/>
-            </>
-        )
+
+        if (this.state.pageLoaded) {
+            return (
+                <>
+                    <Form click={this.handleOnClick}
+                          change={this.handleOnChange}
+                          data={this.state.ingredients}
+                          submit={this.handleOnSubmit}
+                          inputVal={this.state.inputVal}
+                    />
+                    <AddedIngredients list={this.state.addedIngredient}/>
+
+                    {this.state.recipesLoaded?<RecipesList recipes={this.state.recipesToShow}/>:<Loader/>}
+                </>
+            )
+        } else {
+
+            return <Loader/>
+
+        }
     }
 }
 

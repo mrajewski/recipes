@@ -1,0 +1,9 @@
+@import "./sass/loader";
+body{
+  background-color: #ffde6b;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
