@@ -3,6 +3,7 @@ import RecipesList from "./components/recipesList";
 import AddedIngredients from "./components/addedIngredient";
 import Form from "./components/form";
 import Loader from "./components/loader";
+import Header from "./components/header";
 import './App.css';
 import "./styles.scss";
 
@@ -16,7 +17,7 @@ class App extends Component {
         inputVal: '',
         addedIngredient: [],
         recipesToShow: [],
-        pageLoaded: false,
+        // pageLoaded: false,
         recipesLoaded: true
     };
 
@@ -42,7 +43,6 @@ class App extends Component {
             .then(response => response.json())
             .then(contents => {
                 this.setState({
-                    addedIngredient: [],
                     recipesToShow: contents.results,
                     inputVal: '',
                     recipesLoaded:true
@@ -59,6 +59,9 @@ class App extends Component {
     };
     handleOnClick = (e) => {
         e.preventDefault();
+        if (this.state.inputVal.length <=0){
+            return null
+        }
         let addedIngredient = this.state.addedIngredient;
         addedIngredient.push(this.state.inputVal);
         this.setState({
@@ -69,18 +72,24 @@ class App extends Component {
 
     handleOnSubmit = (e) => {
         e.preventDefault();
+        if(this.state.addedIngredient.length<1){
+            alert('You have to choose at least one ingredient');
+            return null
+        }
         this.setState({
-            recipesLoaded:false
+            recipesLoaded:false,
+            addedIngredient: []
+
         });
         const ending = this.state.addedIngredient.join(',').replace("[^a-zA-Z0-9]", "").toLowerCase();
         this.searchForRecipes(proxyUrl + targetUrl + ending);
     };
 
     render() {
-
-        if (this.state.pageLoaded) {
             return (
                 <>
+                    <Header/>
+                    <section className='search-engine'>
                     <Form click={this.handleOnClick}
                           change={this.handleOnChange}
                           data={this.state.ingredients}
@@ -88,15 +97,10 @@ class App extends Component {
                           inputVal={this.state.inputVal}
                     />
                     <AddedIngredients list={this.state.addedIngredient}/>
-
+                    </section>
                     {this.state.recipesLoaded?<RecipesList recipes={this.state.recipesToShow}/>:<Loader/>}
                 </>
             )
-        } else {
-
-            return <Loader/>
-
-        }
     }
 }
 

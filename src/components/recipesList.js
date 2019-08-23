@@ -4,9 +4,12 @@ import React from 'react';
 function RecipeList(props) {
 
     return (
-        <div className='recipes-container'>
+        <section className='recipes-container'>
             {props.recipes.map((recipe,index)=>{
                 return <div key={index} className='recipes-el'>
+                    {/*<div className="recipes-img">*/}
+                        <img src={recipe.thumbnail} alt=""/>
+                    {/*</div>*/}
                     <h3>{recipe.title}</h3>
                     <ul>
                         {recipe.ingredients.split(', ').map((ingredient,i)=>{
@@ -14,12 +17,11 @@ function RecipeList(props) {
                         })}
                     </ul>
                     <a href={recipe.href}>LINK</a>
-                    <img src={recipe.thumbnail} alt=""/>
                 </div>
 
             })}
 
-        </div>
+        </section>
     )
 }
 

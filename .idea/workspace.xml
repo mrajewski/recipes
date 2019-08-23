@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08b05fde-21bc-4097-85bb-25ba79caec80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/icons/24px.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/addedIngredient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addedIngredient.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/recipesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recipesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/loader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sass/loader.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sass/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/sass/variables.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,6 +32,11 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tase\Desktop\Chimera Prime\Zadanie\src\icons" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -49,7 +60,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566485864306</updated>
-      <workItem from="1566485865408" duration="9058000" />
+      <workItem from="1566485865408" duration="9711000" />
+      <workItem from="1566551477706" duration="16147000" />
     </task>
     <servers />
   </component>
@@ -61,7 +73,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

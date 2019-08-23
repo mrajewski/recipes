@@ -1,9 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+@import "./sass/variables";
+@import "./sass/searchEngine";
 @import "./sass/loader";
-body{
-  background-color: #ffde6b;
+
+
+* {
+  margin: 0;
+  bottom: 0;
+  box-sizing: border-box;
 }
-#root{
+
+body {
+  background-color: $primaryColor;
+  //background-image: radial-gradient(circle,$primaryColor, darken($primaryColor,40%));
+  color: $secondaryColor;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#root {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+// Header
+.title-header {
+  //font-family: 'Abel', sans-serif;
+  font-size: calc(50px + 5vw);
+  margin-bottom: 5vh;
+  font-weight: 300;
+  -webkit-text-fill-color: $primaryColor;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: $secondaryColor;
+}
+
+
+//Recipes List
+
+.recipes-container {
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .recipes-el {
+    margin: 10px;
+    width: 30%;
+    min-width: 250px;;
+    border-radius: 10px;
+    overflow: hidden;
+    color: lighten($secondaryColor, 10%);
+    //height: 200px;
+    background-color: darken($primaryColor, 15%);
+    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.5);
+    //border: 1px solid $secondaryColor;
+
+
+    img {
+      //align-self: flex-start;
+      height: 60%;
+      margin-left: 10px;
+    }
+  }
 }

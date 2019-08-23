@@ -6,10 +6,9 @@ function AddedIngredients(props) {
     return (
         <ul className='added-list'>
             {props.list.map((el,i)=>{
-                return <li key={i}>{el}</li>
+                return <li key={i}><span>#</span>{el}</li>
 
             })}
-
         </ul>
 
     )
