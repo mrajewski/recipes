@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
 @import "./sass/variables";
 @import "./sass/searchEngine";
 @import "./sass/loader";
@@ -26,13 +26,29 @@ body {
 
 // Header
 .title-header {
-  //font-family: 'Abel', sans-serif;
   font-size: calc(50px + 5vw);
-  margin-bottom: 5vh;
+  margin-bottom: 50px;
   font-weight: 300;
   -webkit-text-fill-color: $primaryColor;
   -webkit-text-stroke-width: 1.2px;
   -webkit-text-stroke-color: $secondaryColor;
+
+  @media (max-width: 650px) {
+    font-size: calc(50px + 0.5vw);
+
+
+  }
+
+  @media (max-width:420px) {
+    font-size:40px;
+
+
+  }
+  @media (max-width:320px) {
+    font-size:35px;
+
+
+  }
 }
 
 
@@ -45,22 +61,74 @@ body {
   flex-wrap: wrap;
 
   .recipes-el {
+    position: relative;
+    text-align: center;
     margin: 10px;
-    width: 30%;
-    min-width: 250px;;
+    width: 250px;
+    min-width: 250px;
     border-radius: 10px;
     overflow: hidden;
     color: lighten($secondaryColor, 10%);
-    //height: 200px;
-    background-color: darken($primaryColor, 15%);
-    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.5);
+    height: 300px;
+    background-color: darken($primaryColor, 5%);
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
     //border: 1px solid $secondaryColor;
 
 
     img {
-      //align-self: flex-start;
-      height: 60%;
-      margin-left: 10px;
+      margin-top: 10px;
+      //border: 1px solid $secondaryColor;
     }
+
+    h3{
+      margin: 5px 0;
+      vertical-align: top;
+      font-weight: 800;
+      color: darken($secondaryColor,10%);
+    }
+
+
+    ul  {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      max-height: 100px;
+      overflow-y: scroll;
+
+      span{
+        font-weight:800;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      li{
+        font-size: 14px;
+        margin-right: 5px;
+        border-radius: 50px;
+        padding: 0 5px;
+
+
+      }
+
+    }
+    a{
+      text-decoration: none;
+      color: $primaryColor;
+      background-color: lighten($secondaryColor, 10%);;
+      border-radius: 50px;
+      padding: 2px 10px;
+      position: absolute;
+      transform: translate(-50%, -30%);
+
+      &:hover{
+        background-color: $secondaryColor;
+      }
+    }
+
   }
 }
+
+

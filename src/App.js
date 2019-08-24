@@ -18,7 +18,8 @@ class App extends Component {
         addedIngredient: [],
         recipesToShow: [],
         // pageLoaded: false,
-        recipesLoaded: true
+        recipesLoaded: true,
+        onHover:false
     };
 
     componentDidMount() {
@@ -70,6 +71,18 @@ class App extends Component {
         });
     };
 
+    deleteClick = (e,index) => {
+      e.preventDefault();
+      this.setState({
+          addedIngredient: this.state.addedIngredient.filter((el,i)=> i!==index)
+      })
+
+
+
+
+    };
+
+
     handleOnSubmit = (e) => {
         e.preventDefault();
         if(this.state.addedIngredient.length<1){
@@ -96,7 +109,10 @@ class App extends Component {
                           submit={this.handleOnSubmit}
                           inputVal={this.state.inputVal}
                     />
-                    <AddedIngredients list={this.state.addedIngredient}/>
+                    <AddedIngredients
+                        delete={this.deleteClick}
+                        list={this.state.addedIngredient}
+                    />
                     </section>
                     {this.state.recipesLoaded?<RecipesList recipes={this.state.recipesToShow}/>:<Loader/>}
                 </>

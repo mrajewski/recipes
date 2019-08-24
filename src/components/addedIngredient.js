@@ -6,7 +6,7 @@ function AddedIngredients(props) {
     return (
         <ul className='added-list'>
             {props.list.map((el,i)=>{
-                return <li key={i}><span>#</span>{el}</li>
+                return <li onClick={e => {props.delete(e,i)}} key={i}># {el}</li>
 
             })}
         </ul>
