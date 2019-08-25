@@ -2,9 +2,7 @@ import React from 'react';
 import 'simplebar';
 import 'simplebar/dist/simplebar.css';
 
-
 function RecipeList(props) {
-
     return (
         <section className='recipes-container'>
             {props.recipes.map((recipe, index) => {
@@ -19,9 +17,7 @@ function RecipeList(props) {
                     </ul>
                     <a href={recipe.href} rel="noopener noreferrer" target='_blank'>Read more</a>
                 </div>
-
             })}
-
         </section>
     )
 }

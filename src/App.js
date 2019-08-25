@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import RecipesList from "./components/recipesList";
-import AddedIngredients from "./components/addedIngredient";
-import Form from "./components/form";
-import Loader from "./components/loader";
-import Header from "./components/header";
-import './App.css';
-import "./styles.scss";
+import RecipesList from './components/recipesList';
+import AddedIngredients from './components/addedIngredient';
+import Form from './components/form';
+import Loader from './components/loader';
+import Header from './components/header';
+import './styles.scss';
 
 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const targetUrl = 'http://www.recipepuppy.com/api/?i=';
@@ -34,7 +33,7 @@ class App extends Component {
                     pageLoaded:true
                 });
             })
-            .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"))
+            .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"));
     }
 
     //Searching for no recipes
@@ -46,9 +45,9 @@ class App extends Component {
                     recipesToShow: contents.results,
                     inputVal: '',
                     recipesLoaded:true
-                })
+                });
             })
-            .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+            .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"));
     };
 
 
@@ -74,10 +73,8 @@ class App extends Component {
       e.preventDefault();
       this.setState({
           addedIngredient: this.state.addedIngredient.filter((el,i)=> i!==index)
-      })
-
+      });
     };
-
 
     handleOnSubmit = (e) => {
         e.preventDefault();

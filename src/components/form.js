@@ -1,5 +1,4 @@
 import React from 'react';
-// import Plus from '@material-ui/icons/AddCircleOutline';
 
 function Form(props) {
     const {click, submit, change, inputVal, data} = props;

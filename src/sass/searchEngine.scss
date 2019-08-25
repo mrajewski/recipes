@@ -5,7 +5,6 @@
 
   @media (max-width: 500px) {
     width: 95%;
-
   }
 
   form {
@@ -14,27 +13,25 @@
     display: flex;
 
     @media (max-width: 850px) {
-     flex-wrap: wrap;
+      flex-wrap: wrap;
       justify-content: center;
-
     }
     @media (max-width: 500px) {
       width: 100%;
-
     }
   }
 
   // input style
 
-  label{
+  label {
     position: relative;
     width: 80%;
 
     @media (max-width: 850px) {
       width: 100%;
-
     }
   }
+
   input::-webkit-calendar-picker-indicator {
     display: none;
   }
@@ -81,7 +78,6 @@
     }
   }
 
-
   // buttons style
 
   button {
@@ -99,9 +95,8 @@
       background-color: $secondaryColor;
       color: $primaryColor;
     }
-
-
   }
+
   .add-btn {
     font-size: 45px;
     font-weight: 300;
@@ -109,16 +104,12 @@
     width: 60px;
     min-width: 60px;
     margin: 0 10px;
-
-
   }
 
-  .search-btn{
+  .search-btn {
     font-size: 16px;
     width: 18%;
     min-width: 100px;
-
-
   }
 
 
@@ -133,7 +124,6 @@
     flex-wrap: wrap;
     padding: 0;
 
-
     li {
       color: $primaryColor;
       background-color: $secondaryColor;
@@ -146,13 +136,10 @@
       align-items: center;
       cursor: pointer;
 
-    &:hover{
-      background-color:firebrick;
+      &:hover {
+        background-color: firebrick;
+      }
     }
-
-    }
-
-
   }
 
 }
