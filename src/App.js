@@ -17,26 +17,22 @@ class App extends Component {
         addedIngredient: [],
         recipesToShow: [],
         recipesLoaded: true,
-        onHover:false
+        onHover: false
     };
-
     componentDidMount() {
         fetch(proxyUrl + targetUrl)
             .then(response => response.json())
             .then(contents => {
-                // Making list with example ingredients (sorted and no duplicates)
                 const ing = contents.results.map(el => el.ingredients.split(", "));
                 const arr = ing.reduce((a, b) => [...a, ...b]);
                 this.setState({
                     data: contents.results,
                     ingredients: [...new Set(arr)].sort(),
-                    pageLoaded:true
+                    pageLoaded: true
                 });
             })
             .catch(() => console.log("Can’t access " + targetUrl + " response. Blocked by browser?"));
     }
-
-    //Searching for no recipes
     searchForRecipes = (url) => {
         fetch(url)
             .then(response => response.json())
@@ -44,13 +40,11 @@ class App extends Component {
                 this.setState({
                     recipesToShow: contents.results,
                     inputVal: '',
-                    recipesLoaded:true
+                    recipesLoaded: true
                 });
             })
             .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"));
     };
-
-
     handleOnChange = (e) => {
         this.setState({
             inputVal: e.target.value
@@ -58,7 +52,7 @@ class App extends Component {
     };
     handleOnClick = (e) => {
         e.preventDefault();
-        if (this.state.inputVal.length <=0){
+        if (this.state.inputVal.length <= 0) {
             return null
         }
         let addedIngredient = this.state.addedIngredient;
@@ -68,34 +62,30 @@ class App extends Component {
             addedIngredient,
         });
     };
-
-    deleteClick = (e,index) => {
-      e.preventDefault();
-      this.setState({
-          addedIngredient: this.state.addedIngredient.filter((el,i)=> i!==index)
-      });
+    deleteClick = (e, index) => {
+        e.preventDefault();
+        this.setState({
+            addedIngredient: this.state.addedIngredient.filter((el, i) => i !== index)
+        });
     };
-
     handleOnSubmit = (e) => {
         e.preventDefault();
-        if(this.state.addedIngredient.length<1){
+        if (this.state.addedIngredient.length < 1) {
             alert('You have to choose at least one ingredient');
             return null
         }
         this.setState({
-            recipesLoaded:false,
+            recipesLoaded: false,
             addedIngredient: []
-
         });
         const ending = this.state.addedIngredient.join(',').replace("[^a-zA-Z0-9]", "").toLowerCase();
         this.searchForRecipes(proxyUrl + targetUrl + ending);
     };
-
     render() {
-            return (
-                <>
-                    <Header/>
-                    <section className='search-engine'>
+        return (
+            <>
+                <Header/>
+                <section className='search-engine'>
                     <Form click={this.handleOnClick}
                           change={this.handleOnChange}
                           data={this.state.ingredients}
@@ -106,10 +96,10 @@ class App extends Component {
                         delete={this.deleteClick}
                         list={this.state.addedIngredient}
                     />
-                    </section>
-                    {this.state.recipesLoaded?<RecipesList recipes={this.state.recipesToShow}/>:<Loader/>}
-                </>
-            )
+                </section>
+                {this.state.recipesLoaded ? <RecipesList recipes={this.state.recipesToShow}/> : <Loader/>}
+            </>
+        )
     }
 }
 
