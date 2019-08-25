@@ -17,7 +17,7 @@ function RecipeList(props) {
                             return <li key={i}># {ingredient}</li>
                         })}
                     </ul>
-                    <a href={recipe.href}>Read more</a>
+                    <a href={recipe.href} target='_blank'>Read more</a>
                 </div>
 
             })}

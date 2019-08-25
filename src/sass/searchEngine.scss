@@ -93,7 +93,7 @@
     text-transform: uppercase;
     color: $secondaryColor;
     padding: 5px 10px;
-    transition: .1s;
+    transition: .2s;
 
     &:hover {
       background-color: $secondaryColor;
@@ -110,9 +110,6 @@
     min-width: 60px;
     margin: 0 10px;
 
-    &:hover{
-
-    }
 
   }
 
