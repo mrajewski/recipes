@@ -17,7 +17,6 @@ class App extends Component {
         inputVal: '',
         addedIngredient: [],
         recipesToShow: [],
-        // pageLoaded: false,
         recipesLoaded: true,
         onHover:false
     };
@@ -76,9 +75,6 @@ class App extends Component {
       this.setState({
           addedIngredient: this.state.addedIngredient.filter((el,i)=> i!==index)
       })
-
-
-
 
     };
 
