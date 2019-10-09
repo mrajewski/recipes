@@ -1,4 +1,6 @@
 Recipes finder (API)
+<br>
+ Live preview https://mrajewski.github.io/recipes/
 
 React/Sass
 
